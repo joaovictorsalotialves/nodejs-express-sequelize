@@ -3,6 +3,6 @@ const PersonController = require('../controllers/PersonController.js')
 
 const router = Router()
 
-router.get('/', PersonController.getAll)
+router.get('/person', PersonController.getAll)
 
 module.exports = router
