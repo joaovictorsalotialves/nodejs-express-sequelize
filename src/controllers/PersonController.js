@@ -7,6 +7,18 @@ class PersonController extends Controller {
   constructor () {
     super(personService)
   }
+
+  async getMatriculationsByStudent(req, res) {
+    try {
+      const { studentId } = req.params
+
+      const matriculations = await personService.getMatriculationsByStudent(Number(studentId))
+
+      return res.status(200).json(matriculations)
+    } catch (error) {
+      
+    }
+  }
 }
 
 module.exports = PersonController

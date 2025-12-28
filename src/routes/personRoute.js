@@ -13,6 +13,7 @@ router.post('/person', (req, res) => personController.create(req, res))
 router.put('/person/:id', (req, res) => personController.update(req, res))
 router.delete('/person/:id', (req, res) => personController.delete(req, res))
 
+router.get('/person/:studentId/matriculation', (req, res) => personController.getMatriculationsByStudent(req, res))
 router.post('/person/:studentId/matriculation', (req, res) => matriculationController.create(req, res))
 
 module.exports = router
