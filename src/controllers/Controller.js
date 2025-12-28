@@ -28,7 +28,7 @@ class Controller {
       const data = req.body
 
       const result = await this.service.create(data)
-      return res.status(200).json(result)
+      return res.status(201).json(result)
     } catch (error) {
       
     }

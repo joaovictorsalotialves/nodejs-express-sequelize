@@ -1,7 +1,9 @@
 const { Router } = require('express')
 const PersonController = require('../controllers/PersonController.js')
+const MatriculationController = require('../controllers/MatriculationController.js')
 
 const personController = new PersonController()
+const matriculationController = new MatriculationController()
 
 const router = Router()
 
@@ -10,5 +12,7 @@ router.get('/person/:id', (req, res) => personController.getById(req, res))
 router.post('/person', (req, res) => personController.create(req, res))
 router.put('/person/:id', (req, res) => personController.update(req, res))
 router.delete('/person/:id', (req, res) => personController.delete(req, res))
+
+router.post('/person/:studentId/matriculation', (req, res) => matriculationController.create(req, res))
 
 module.exports = router
