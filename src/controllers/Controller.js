@@ -8,7 +8,7 @@ class Controller {
       const result = await this.service.getAll()
       return res.status(200).json(result)
     } catch (error) {
-      
+      return res.status(500).json({ error: error.message })
     }
   }
 
@@ -19,7 +19,7 @@ class Controller {
       const result = await this.service.getById(id)
       return res.status(200).json(result)
     } catch (error) {
-      
+      return res.status(500).json({ error: error.message })
     }
   }
 
@@ -30,7 +30,7 @@ class Controller {
       const result = await this.service.create(data)
       return res.status(201).json(result)
     } catch (error) {
-      
+      return res.status(500).json({ error: error.message })
     }
   }
 
@@ -47,7 +47,7 @@ class Controller {
       
       return res.status(200).json({ message: 'Updated successfully' })
     } catch (error) {
-      
+      return res.status(500).json({ error: error.message })
     }
   }
 
@@ -58,7 +58,7 @@ class Controller {
       await this.service.delete(id)
       return res.status(200).json()
     } catch (error) {
-      
+      return res.status(500).json({ error: error.message })
     }
   }
 }
