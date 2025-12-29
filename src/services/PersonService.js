@@ -11,6 +11,11 @@ class PersonService extends Services {
 
     return matriculations
   }
+
+  async getAllPeople() {
+    const people = await super.getByScope('all')
+    return people
+  }
 }
 
 module.exports = PersonService
