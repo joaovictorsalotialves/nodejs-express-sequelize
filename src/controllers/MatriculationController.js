@@ -21,6 +21,18 @@ class MatriculationController extends Controller {
       return res.status(500).json({ error: error.message })
     }
   }
+
+  async getCrowdedCourses(req, res) {
+    const crowdedCourse = 2
+    try {
+      const result = await matriculationService.getAndCount({
+        status: 'matriculado'
+      })
+      return res.status(200).json(result)
+    } catch (error) {
+      return res.status(500).json({ error: error.message })
+    }
+  }
 }
 
 module.exports = MatriculationController
