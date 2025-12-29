@@ -16,7 +16,18 @@ class Controller {
     try {
       const { id } = req.params
 
-      const result = await this.service.getById(id)
+      const result = await this.service.getById(Number(id))
+      return res.status(200).json(result)
+    } catch (error) {
+      return res.status(500).json({ error: error.message })
+    }
+  }
+
+  async getOne(req, res) {
+    try {
+      const { ...params } = req.params
+
+      const result = await this.service.getOne(params)
       return res.status(200).json(result)
     } catch (error) {
       return res.status(500).json({ error: error.message })
