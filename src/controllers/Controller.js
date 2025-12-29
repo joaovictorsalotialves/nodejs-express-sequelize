@@ -30,6 +30,7 @@ class Controller {
       const { ...params } = req.params
 
       const where = converterIds(params)
+      console.log(where)
 
       const result = await this.service.getOne(where)
       return res.status(200).json(result)
@@ -51,10 +52,12 @@ class Controller {
 
   async update(req, res) {
     try {
-      const { id } = req.params
+      const { ...params } = req.params
       const data = req.body
 
-      const result = await this.service.update(data, Number(id))
+      const where = converterIds(params)
+
+      const result = await this.service.update(data, where)
 
       if (!result) {
         return res.status(400).json({ message: 'Update failed' })

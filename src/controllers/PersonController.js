@@ -10,9 +10,9 @@ class PersonController extends Controller {
 
   async getAllMatriculationsByStudent(req, res) {
     try {
-      const { studentId } = req.params
+      const { student_id } = req.params
 
-      const matriculations = await personService.getAllMatriculationsByStudent(Number(studentId))
+      const matriculations = await personService.getAllMatriculationsByStudent(Number(student_id))
 
       return res.status(200).json(matriculations)
     } catch (error) {
@@ -22,9 +22,9 @@ class PersonController extends Controller {
 
   async getMatriculationsActiveByStudent(req, res) {
     try {
-      const { studentId } = req.params
+      const { student_id } = req.params
 
-      const matriculations = await personService.getMatriculationsActiveByStudent(Number(studentId))
+      const matriculations = await personService.getMatriculationsActiveByStudent(Number(student_id))
 
       return res.status(200).json(matriculations)
     } catch (error) {

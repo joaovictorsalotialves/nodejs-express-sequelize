@@ -25,9 +25,9 @@ class Services {
     return dataSource[this.model].create(data)
   }
 
-  async update(data, id) {
+  async update(data, where) {
     const dataUpdate = await dataSource[this.model].update(data, {
-      where: { id: id }
+      where: { ...where }
     })
 
     if (dataUpdate[0] === 0) {

@@ -14,9 +14,11 @@ router.post('/person', (req, res) => personController.create(req, res))
 router.put('/person/:id', (req, res) => personController.update(req, res))
 router.delete('/person/:id', (req, res) => personController.delete(req, res))
 
-router.get('/person/:studentId/matriculation', (req, res) => personController.getMatriculationsActiveByStudent(req, res))
-router.get('/person/:studentId/matriculation/all', (req, res) => personController.getAllMatriculationsByStudent(req, res))
-router.get('/person/:studentId/matriculation/:id', (req, res) => personController.getOne(req, res))
-router.post('/person/:studentId/matriculation', (req, res) => matriculationController.create(req, res))
+router.get('/person/:student_id/matriculation', (req, res) => personController.getMatriculationsActiveByStudent(req, res))
+router.get('/person/:student_id/matriculation/all', (req, res) => personController.getAllMatriculationsByStudent(req, res))
+router.get('/person/:student_id/matriculation/:id', (req, res) => matriculationController.getOne(req, res))
+router.post('/person/:student_id/matriculation', (req, res) => matriculationController.create(req, res))
+router.put('/person/:student_id/matriculation/:id', (req, res) => matriculationController.update(req, res))
+router.delete('/person/:student_id/matriculation/:id', (req, res) => matriculationController.delete(req, res))
 
 module.exports = router
