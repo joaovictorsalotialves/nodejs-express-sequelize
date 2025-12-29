@@ -1,3 +1,5 @@
+const converterIds = require('../utils/stringConverterHelper.js')
+
 class Controller {
   constructor (service) {
     this.service = service
@@ -27,7 +29,9 @@ class Controller {
     try {
       const { ...params } = req.params
 
-      const result = await this.service.getOne(params)
+      const where = converterIds(params)
+
+      const result = await this.service.getOne(where)
       return res.status(200).json(result)
     } catch (error) {
       return res.status(500).json({ error: error.message })
