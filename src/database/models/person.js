@@ -1,4 +1,6 @@
 'use strict';
+const isCpfValid = require('../../utils/validateCpfHelper.js')
+
 const {
   Model
 } = require('sequelize');
@@ -16,7 +18,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Person.init({
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [3, 30],
+          msg: 'The name must be between 3 and 30 characters long'
+        }
+      }
+    },
     email: {
       type: DataTypes.STRING,
       validate: {
@@ -26,7 +36,14 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    cpf: DataTypes.STRING,
+    cpf: {
+      type: DataTypes.STRING,
+      validate: {
+        cpfIsValid: (cpf) => {
+          if (!isCpfValid(cpf)) throw new Error('Invalid CPF format')
+        }
+      }
+    },
     active: DataTypes.BOOLEAN,
     role: DataTypes.STRING
   }, {
