@@ -3,6 +3,7 @@ const Services = require('./Services.js')
 class PersonService extends Services {
   constructor () {
     super('Person')
+    this.matriculationService = new Services('Matriculation')
   }
 
   async getAllMatriculationsByStudent(studentId) {
@@ -22,6 +23,13 @@ class PersonService extends Services {
   async getAllPeople() {
     const people = await super.getByScope('all')
     return people
+  }
+
+  async cancelStudentAndMatriculation(studentId) {
+    await super.update({ active: false }, { id: studentId })
+    await this.matriculationService.update({ status: 'cancelado' }, {
+      student_id: studentId
+    })
   }
 }
 

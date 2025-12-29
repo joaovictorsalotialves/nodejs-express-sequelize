@@ -12,6 +12,7 @@ router.get('/person/all', (req, res) => personController.getAllPeople(req, res))
 router.get('/person/:id', (req, res) => personController.getById(req, res))
 router.post('/person', (req, res) => personController.create(req, res))
 router.put('/person/:id', (req, res) => personController.update(req, res))
+router.put('/person/:student_id/cancel', (req, res) => personController.cancelStudent(req, res))
 router.delete('/person/:id', (req, res) => personController.delete(req, res))
 
 router.get('/person/:student_id/matriculation', (req, res) => personController.getMatriculationsActiveByStudent(req, res))
