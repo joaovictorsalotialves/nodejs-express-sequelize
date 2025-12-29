@@ -30,7 +30,6 @@ class Controller {
       const { ...params } = req.params
 
       const where = converterIds(params)
-      console.log(where)
 
       const result = await this.service.getOne(where)
       return res.status(200).json(result)

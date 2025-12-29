@@ -21,6 +21,14 @@ class Services {
     return dataSource[this.model].findOne({ where: { ...where } })
   }
 
+  async getAndCount(where) {
+    return dataSource[this.model].findAndCountAll({ 
+      where: { ...where },
+      limit: 2,
+      order: [['id', 'DESC']],
+    })
+  }
+
   async create(data) {
     return dataSource[this.model].create(data)
   }
